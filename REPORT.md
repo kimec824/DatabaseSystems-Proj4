@@ -1,23 +1,63 @@
 # EduBtM Report
 
-Name:
+Name: Eunchae Kim
 
-Student id:
+Student id: 20180297
 
 # Problem Analysis
-
-FILL WITH YOUR ANALYSIS
+B+ tree의 객체와 인덱스를 관리하기 위한 기능을 구현한다.
+객체와 인덱스의 생성, 삭제, 검색 기능을 구현한다.
 
 # Design For Problem Solving
 
 ## High Level
+아래 기능을 구현한다.
 
-FILL WITH YOUR HIGH LEVEL DESIGN
+1. B+ 트리 색인 생성 / 삭제:
+트리 노드 구조 정의
+색인 생성 및 삭제 알고리즘 구현
+
+2.새로운 객체 삽입:
+키 정렬 및 트리 속성 유지 알고리즘 개발
+균형을 유지하는 삽입 처리
+
+3.Overflow 및 분할 처리:
+오버플로 조건 감지
+키 및 포인터 재분배 알고리즘 개발
+
+4.객체 삭제:
+잎 노드에서 객체 제거
+언더플로 조건 처리 및 트리 균형 유지
+
+5.객체 검색:
+효율적인 검색 알고리즘 개발
+B+ 트리 구조 활용하여 검색 성능 최적화
+
+B+tree manager는 다음과 같은 API들로 구성된다.
+
+- EduBtM_CreateIndex()
+  
+- EduBtM_DropIndex()
+  
+- EduBtM_InsertObject()
+  
+- EduBtM_DeleteObject()
+  
+- EduBtM_Fetch()
+  
+- EduBtM_FetchNext()
+
 
 ## Low Level
+EduBtM_CreateIndex(): 새로운 B+ 트리 인덱스를 생성하고 초기화한다. 이 함수는 새로운 B+ 트리를 생성하고 필요한 초기화 작업을 수행하여 인덱스를 사용할 준비를 한다.
 
-FILL WITH YOUR LOW LEVEL (CODE LEVEL) DESIGN
+EduBtM_DropIndex(): B+ 트리 인덱스를 삭제하고 관련된 자원을 해제한다. 이 함수는 B+ 트리를 제거하고 해당하는 모든 메모리나 자원을 해제하여 시스템에서 인덱스를 완전히 제거한다.
 
-# Mapping Between Implementation And the Design
+EduBtM_InsertObject(): 주어진 키와 오브젝트를 B+ 트리에 삽입하고, 필요한 경우 분할 연산을 수행하여 트리의 균형을 유지한다. 이 함수는 주어진 키와 오브젝트를 B+ 트리에 추가하고, 노드에 공간이 부족하면 새로운 노드를 생성하거나 분할 연산을 수행하여 트리의 높이를 유지한다.
 
-FILL WITH YOUR CODE IMPLEMENTATION DESCRIPTION
+EduBtM_DeleteObject(): 주어진 키에 해당하는 오브젝트를 B+ 트리에서 삭제하고, 필요한 경우 병합 또는 재분배 연산을 수행하여 트리의 균형을 유지한다. 이 함수는 주어진 키에 해당하는 오브젝트를 B+ 트리에서 제거하고, 삭제 이후에도 트리의 균형을 유지하기 위해 필요한 재구성 작업을 수행한다.
+
+EduBtM_Fetch(): 주어진 키를 사용하여 B+ 트리에서 해당하는 오브젝트를 검색하고 반환한다. 이 함수는 주어진 키에 해당하는 오브젝트를 B+ 트리에서 검색하고 반환한다. 검색 과정에서는 B+ 트리의 특성을 활용하여 효율적으로 검색을 수행한다.
+
+EduBtM_FetchNext(): 주어진 키의 다음에 위치한 오브젝트를 B+ 트리에서 검색하고 반환한다. 이 함수는 주어진 키의 다음 위치에 있는 오브젝트를 검색하고 반환한다. 이 때, B+ 트리의 구조를 이용하여 다음 위치를 효율적으로 찾아내고 검색을 수행한다.
+
